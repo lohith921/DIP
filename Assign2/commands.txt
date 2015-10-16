@@ -1,0 +1,11 @@
+I=imread('building image.jpg');
+I1=rgb2gray(I);
+%roberts edge detection
+I2=edge(I1,'Roberts');
+figure, imshow(I2); title('Edge detection with Roberts');
+%sobel edge detection
+sobel=edge(I1,'Sobel');
+figure, imshow(sobel); title('Edge detection with Sobel');
+%Canny edge detection
+cany=edge(I1,'Canny');
+figure, imshow(cany); title('Edge detection with Canny');
