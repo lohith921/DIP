@@ -1,11 +1,11 @@
-% This is for Power-Law Transform %%
+% This is for Power-Law Transform 
 %for gamma value less than 1 we get Bright image
-%for gamma value greater than 1 we get Dark image%%
+%for gamma value greater than 1 we get Dark image
 %RGB=imread('Uexposed.jpg');
 RGB=imread('Oexposed.jpg');
 % RGB to gray
 I=rgb2gray(RGB);
-% In double format
+% Change to double
 I=im2double(I);
 % computing size m,n 
 [m n] = size(I);
