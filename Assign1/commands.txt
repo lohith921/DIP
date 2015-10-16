@@ -22,8 +22,8 @@
    imhist(A1);
    B=histeq(A1);
    imhist(B);
-   figure, imshow(A1); label('over exposed image');
-   figure, imshow(B); label('over exposed after histogram equalization');
+   figure, imshow(A1); title('over exposed image');
+   figure, imshow(B); title('over exposed after histogram equalization');
    imhist(A1);
    imhist(B);
 
