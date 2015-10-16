@@ -6,6 +6,7 @@
    
    I=imread('car1.gif');
    imhist(I);
+  % histogram equalization 
    J=histeq(I);
    imhist(J);
    figure, imshow(J);
@@ -13,20 +14,23 @@
 
    Over exposed image:
    
+   % reading the image
    A=imread('overexposure2.jpg');
+   % converting color image to gray scale
    A1=rgb2gray(A);
+   % draws the histogram of the image
    imhist(A1);
    B=histeq(A1);
    imhist(B);
-   figure, imshow(A1);
-   figure, imshow(B);
-   figure, imshow(A1);
+   figure, imshow(A1); label('over exposed image');
+   figure, imshow(B); label('over exposed after histogram equalization');
    imhist(A1);
    imhist(B);
 
 3. Noise Addition and removal:
    I=imread('Oexposed.jpg');
    I1=rgb2gray(I);
+   % adding Gaussian noise with default mean values
    J1 = imnoise(I1,'gaussian');
    figure, imshow(J1);
 
