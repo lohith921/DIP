@@ -9,3 +9,13 @@ figure, imshow(sobel); title('Edge detection with Sobel');
 %Canny edge detection
 cany=edge(I1,'Canny');
 figure, imshow(cany); title('Edge detection with Canny');
+%just a comment line
+ I=imread('indoor_image.jpeg');
+>> I=imread('indoor_image.jpeg');
+>> I1=rgb2gray(I);
+>> I2=edge(I1,'Roberts');
+>> figure, imshow(I2); title('Indoor image with Roberts');
+>> I2=edge(I1,'Sobel');
+>> figure, imshow(I2); title('Indoor image with Sobel');
+>> I2=edge(I1,'Canny');
+>> figure, imshow(I2); title('Indoor image with Canny');
