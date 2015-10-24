@@ -1,35 +1,34 @@
 %Program for problem 2:
-clear all
 %reading the under exposed image
-I=imread('Uexposed.jpg');
+Ue = imread('Uexposed.jpg');
 % converting to gray scale image
-I1=rgb2gray(I);
+I = rgb2gray(Ue);
 % displaying the histogram of the image  
-imhist(I1); 
+imhist(I); 
 title('Under exposed Histogram Original');
 % histogram equalization 
-J=histeq(I1,256);
+I1 = histeq(I,256);
 % histogram of output image 
-imhist(J); 
+imhist(I1); 
 title('Under exposed Histogram After Histogram equalization');
-figure, imshow(I1); 
+figure, imshow(I); 
 title('Original under exposed image');
-figure, imshow(J); 
+figure, imshow(I1); 
 title('Under exposed image after histogram equalization');
 % reading the over exposed image
-A=imread('Oexposed.jpg');
+Oe = imread('Oexposed.jpg');
 % converting color image to grey scale
-A1=rgb2gray(A);
+A = rgb2gray(Oe);
 % displaying the histogram of the image  
-imhist(A1); 
+imhist(A); 
 title('Over exposed Histogram Original');
 % histogram equalization
-B=histeq(A1,256);
+A1 = histeq(A,256);
 % histogram of output image 
-imhist(B); 
+imhist(A1); 
 title('Over exposed Histogram After Histogram equalization');
-figure, imshow(A1); 
+figure, imshow(A); 
 title('Original over exposed image');
-figure, imshow(B); 
+figure, imshow(A1); 
 title('Over exposed after histogram equalization');
 %end
