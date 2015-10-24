@@ -3,12 +3,12 @@
 h = ones(3,3)/9;
 % defining 5x5 averaging filter
 h5 = ones(5,5)/25;
-% Creating the gaussian filter with size = [3 3] and sigma = 2
-Gauss3 = fspecial('gaussian',[3 3],2);
-% Creating the gaussian filter with size = [5 5] and sigma = 2
-Gauss5 = fspecial('gaussian',[5 5],2);
+% Creating the gaussian filter with size = [3 3] and sigma = 1
+Gauss3 = fspecial('gaussian',[3 3],1);
+% Creating the gaussian filter with size = [5 5] and sigma = 1
+Gauss5 = fspecial('gaussian',[5 5],1);
 %-------------------------------------------------------------------------%
-% reading the image
+% reading the input image
 Oe = imread('Oexposed.jpg');
 % converting to gray image
 I = rgb2gray(Oe);
@@ -30,7 +30,7 @@ figure, imshow(I4); title('Oexposed image with 3x3 Gauss filter');
 
 % filtering using 5x5 Gaussian filter
 I5 = imfilter(I1, Gauss2, 'same');
-figure, imshow(I5); title('Over exposed image with 5x5 Gauss filter');
+figure, imshow(I5); title('Oexposed image with 5x5 Gauss filter');
 %-------------------------------------------------------------------------%
 % adding Gaussian noise with mean=100 and variance 0.05
 J = imnoise(I,'gaussian',100,0.05);
