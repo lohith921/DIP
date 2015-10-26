@@ -1,0 +1,16 @@
+Power law transformation:
+As discussed, for a higher gamma value, the low intensity of the under exposed image have been stretched and image became more darker. For the lower gamma values, the higher intensity has been stretched and the image became more bright. For the over exposed image; for a lower gamma value, the higher intensities have been stretched and the image is also invisible. for higher gamma value, very few details are visible.
+
+Histogram Equalization:
+Under exposed image- We can clearly see the stretch in the intensities after plotting the histogram. The image becomes brighter and more details are visible.
+Over exposed image- For the over exposed image, the intensities have been shifted to lower values, the image is less bright and difference can be clearly observed between the original image and final image.
+
+Gaussian Noise:
+Under exposed image- We can observe a blurring effect when we apply the gaussian 3x3 filter. We can observe more blurring effect with a 5x5 filter. The blurring effect can also be observed with averaging filter. When we add gaussian noise with mean=0 and variance=0.05, the noise is more than what can be observed in normal noise. We can observe the blurring effect with gaussian filters also.
+
+Over exposed image- We can observe a blurring effect when we apply the gaussian 3x3 filter. We can observe more blurring effect with a 5x5 filter. When we add gaussian noise with mean=0 and variance=0.05, the noise is more than what can be observed in normal noise. Upon comparing averaging filter with gaussian filter for 3x3 filters, the difference was very little, but for 5x5 filters, we can observe a difference.
+
+Laplacian enhancement:
+Under exposed image- I have used two types of laplacian filters, normal and diagonal. When we apply the normal laplacian enhancement, the image is sharpened as expected. With a diagonal laplacian enhancement, the sharpening is more clear and the image looks very neat.
+
+Over exposed image- The same effect as observed in under exposed image can be observed here also.
