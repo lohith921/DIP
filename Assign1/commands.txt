@@ -1,7 +1,4 @@
 
-
-
-
 2. Under exposed image:
    
    I=imread('car1.gif');
@@ -35,9 +32,9 @@
    figure, imshow(J1);
 
    h=ones(3,3)/9; % 3x3 averaging filter
->> figure, imshow(J1);
->> J2=imfilter(J1,h);
->> figure, imshow(J2);
->> h5=ones(5,5)/25; % 5x5 averaging filter
->> J3=imfilter(J1,h5);
->> figure, imshow(J3);
+   figure, imshow(J1);
+   J2=imfilter(J1,h);
+   figure, imshow(J2);
+ h5=ones(5,5)/25; % 5x5 averaging filter
+ J3=imfilter(J1,h5);
+ figure, imshow(J3);
