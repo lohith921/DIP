@@ -1,7 +1,7 @@
 function [ Op ] = global_Thresholding( I,T )
 %UNTITLED4 Summary of this function goes here
 %   Detailed explanation goes here
-[m n]=size(I);
+[m,n]=size(I);
 I1 = zeros(m,n);
 m1 = 0;
 m2 = 0;
