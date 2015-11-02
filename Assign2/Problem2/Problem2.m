@@ -1,4 +1,4 @@
-RGB = imread('building.jpg');
+RGB = imread('image_1_object.jpg');
 % convert to gray scale
 I = rgb2gray(RGB);
 
@@ -22,13 +22,17 @@ title('Building image');
 I1 = zeros(m1,n1);
 maxx = max(max(H));
 maxx
+%x = linspace(-10,10,1);
+%xsize = size(x);
+
 for i = 1:m
     for j = 1:n
         if(H(i,j)==maxx)
-         %i
-         %j
+         i
+         j
          r = R(i);
          t = T(j);
+		 %y = (r - x*cos(t))/sin(t);
          x = round(abs(r*cos(t)));
          y = round(abs(r*sin(t)));
          x
