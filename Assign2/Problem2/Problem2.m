@@ -1,13 +1,14 @@
-RGB = imread('image_1_object.jpg');
+I = imread('image_1_object.jpg');
 % convert to gray scale
-I = rgb2gray(RGB);
+I = rgb2gray(I);
 
 %Extract edges
 BW = edge(I,'Canny');
-[H, T, R] = hough(BW, 'RhoResolution',0.5,'ThetaResolution',0.5);
+%[H, T, R] = hough(BW, 'RhoResolution',0.5,'ThetaResolution',0.5);
+[H, T, R] = hough(BW);
 % Display original image
 % subplot(2,1,1);
-imshow(RGB);
+imshow(BW);
 title('Building image');
 
 % Display the Hough matrix
@@ -22,9 +23,9 @@ title('Building image');
 I1 = zeros(m1,n1);
 maxx = max(max(H));
 maxx
+%flag=false;
 %x = linspace(-10,10,1);
 %xsize = size(x);
-
 for i = 1:m
     for j = 1:n
         if(H(i,j)==maxx)
@@ -38,17 +39,18 @@ for i = 1:m
          x
          y
          if(x>0 && x<=m1 && y>0 && y<=n1)
-            int = I(x,y);
+            int = BW(x,y);
             for k = 1:m1
                 for l = 1:n1
-                    if(I(k,l) < int)
+                    if(BW(k,l) < int)
                         I1(k,l)=0;
                     else
                         I1(k,l)=1;
                     end
                 end
             end
-            exit;
+            %flag=true;
+            figure, imshow(I1);
          end
         end
     end
