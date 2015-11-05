@@ -6,11 +6,11 @@ j=1;
 i=1;
 I1 = zeros(m,n);
 A=zeros(win,win);
-while(i<=m-win)
-    A=I(i:win,j:win);
-    I1(i:win,j:win)=local_thresholding(A);
+while(i<=(m-win))
+    A=I(i:(i-1)+win,j:(j-1)+win);
+    I1(i:(i-1)+win,j:(j-1)+win)=local_thresholding(A);
     j=j+win;
-    if(j+win==n)
+    if((j+win)==n)
         i=i+win;
         j=1;
     end
