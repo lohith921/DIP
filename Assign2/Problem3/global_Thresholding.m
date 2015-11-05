@@ -1,16 +1,16 @@
 function [ Op ] = global_Thresholding( I,T )
-%UNTITLED4 Summary of this function goes here
+% global_thresholding function
 %   Detailed explanation goes here
 [m,n]=size(I);
 I1 = zeros(m,n);
-m1 = 0;
-m2 = 0;
-c1 = 0;
-c2 = 0;
 T
 flag = true;
 while flag
 for i=1:m;
+m1 = 0;
+m2 = 0;
+c1 = 0;
+c2 = 0;
     for j=1:n;
         if(I(i,j)<=T)
             I1(i,j)=0;
