@@ -1,9 +1,9 @@
-function [ Op ] = global_Thresholding( I,T )
+function [ Op ] = global_Thresholding( I )
 % global_thresholding function
 %   Detailed explanation goes here
 [m,n]=size(I);
 I1 = zeros(m,n);
-T
+T = sum(sum(I))/(m*n);
 flag = true;
 while flag
 for i=1:m;
@@ -36,6 +36,5 @@ else
 end
 end
 Op=I1;
-
 end
 
