@@ -1,6 +1,5 @@
 function [ Op ] = global_Thresholding( I )
 % global_thresholding function
-%   Detailed explanation goes here
 [m,n]=size(I);
 I1 = zeros(m,n);
 T = sum(sum(I))/(m*n);
@@ -23,8 +22,6 @@ c2 = 0;
         end
     end
 end
-%m1
-%m2
 %figure, imshow(I1); title('Segmented image using global thresholding');
 % computing mean of groups
 m1=m1/c1;
