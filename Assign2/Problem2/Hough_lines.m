@@ -1,8 +1,8 @@
 function [] = Hough_lines(In)
 % I = imread('building.jpg');
 % I1 = rgb2gray(I);
-rot = imrotate(In,33,'crop');
-E1 = edge(rot,'Canny');
+% rot = imrotate(In,30,'crop');
+E1 = edge(In,'Canny');
 [H, T, R] = hough(E1, 'RhoResolution',1.0,'ThetaResolution',1.0);
 peaks = houghpeaks(H,2);
 imshow(imadjust(mat2gray(H)),'XData',T,'YData',R,...
@@ -13,7 +13,7 @@ colormap(hot);
 x = T(peaks(:,2)); y = R(peaks(:,1));
 plot(x,y,'s','color','white');
 lines = houghlines(E1,T,R,peaks,'FillGap',5,'MinLength',7);
-figure, imshow(rot), hold on;
+figure, imshow(In), hold on;
 max_len = 0;
 for k = 1:length(lines)
    xy = [lines(k).point1; lines(k).point2];
