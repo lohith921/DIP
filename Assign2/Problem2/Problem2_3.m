@@ -13,7 +13,7 @@ J1 = rgb2gray(J);
 Z1 = rgb2gray(Z);
 Hough_lines(I1);
 %
-Hough_lines(J1);
-% 
-Hough_lines(Z1);
+% Hough_lines(J1);
+% % 
+% Hough_lines(Z1);
 % end of program
