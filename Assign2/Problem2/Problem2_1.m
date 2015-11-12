@@ -41,6 +41,6 @@ imshow(imadjust(mat2gray(H2)),'XData',T2,'YData',R2,...
  title('Hough Transform of Indoor image');
  axis on, axis normal;
  colormap(hot);
- % Display the Hough matrix
+% Display the Hough matrix
 % subplot(2,1,2);
 % [H, T, R] = hough(BW);
