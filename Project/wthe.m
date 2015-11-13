@@ -1,4 +1,4 @@
-function [ out ] = wthe(In, r)
+function [ out ] = wthe(In, r, alpha)
 % Weighted thresholded intensity transformation program
 % Paper: Fast Image/Video Contrast Enhancement Based on Weighted
 % Thresholded Histogram Equalization
@@ -15,8 +15,8 @@ end
 % weighted probability function
 p1 = sort(p);
 % selecting probabilities from top 10 and bottow 10 for Pu and Pl
-up = p1(K-10,:);
-low = p1(10,:);
+up = p1(K-alpha,:);
+low = p1(alpha,:);
 for i = 1:K
     if( p(i)>up)
         pwt(i)=up;
