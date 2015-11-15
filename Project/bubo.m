@@ -3,25 +3,27 @@ function [out] = bubo(In, alpha)
 % The corresponding paper is 'CONTRAST ENHANCEMENT USING HISTOGRAM EQUALIZATION
 % WITH BIN UNDERFLOWAND BIN OVERFLOW'
 In = imresize(In, 0.65);
-figure, imshow(In); title('Reduced image');
-[M,N]=size(In);
+% figure, imshow(In); title('Reduced image');
+[M,N] = size(In);
 sz = M*N;
-Cbu = (1 - alpha)/sz;
+Cbu = abs((1 - alpha)/sz);
 Cbo = (1 + alpha)/sz;
+Cbu
+Cbo
 % K = 256;
 K = max(max(In));
 p = zeros(K,1); % probability density function
 for i=1:K
     temp = find(In==(i-1));
-    [nk,d] = size(temp);
+    [nk,~] = size(temp);
     p(i) = nk/sz;
 end
 pn = zeros(K,1); % modified probability density function
 for i = 1:K
     if p(i) > Cbo
         pn(i) = Cbo;
-    elseif( p(i)<Cbu)
-        pn(i)=Cbu;
+    elseif( p(i)< Cbu)
+        pn(i)= Cbu;
     else
         pn(i)=p(i);
     end
@@ -48,4 +50,3 @@ end
 out = Iout;
 end
 % end of program.
- 
