@@ -47,7 +47,8 @@ figure, imshow(Gn(1:M,1:N)); title('Image with gaussian noise');
 % Inverse filtering begins now.
 % remove gaussian noise using mean filter
 % Fclear = conv2(single(Gn), ones(5)/25);
-Fclear = imgaussfilt(Gn, 0.02);
+% Fclear = imgaussfilt(Gn, 0.02);
+Fclear = medfilt2(Gn,[9 9]);
 % Fclear = gauss_lowpass(Gn);
 figure, imshow(Fclear(1:M,1:N)); title('Gaussian noise removed');
 % lets transform it to frequency domain
@@ -66,7 +67,7 @@ Hr = H;
 % designing filter with width 70
 for u = 1:P
     for v = 1:Q
-        l = ((u-70)^2 + (v-70)^2)^(5/6);
+        l = ((u-a)^2 + (v-b)^2)^(5/6);
         l = 1*k*l; % exponent is made positive.
         Hr(u,v) = exp(l);
     end
