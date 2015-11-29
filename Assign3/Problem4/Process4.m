@@ -34,19 +34,21 @@ for u = 1:P
 end
 Ftr = H.*Ftr;
 Fr = real(ifft2(Ftr));
-% shifting back
+ % shifting back
 for i = 1:P
     for j = 1:Q
         Fr(i,j) = (-1)^(i+j)*Fr(i,j);
     end
 end
 figure, imshow(Fr(1:M,1:N)); title('Image with atmospheric turbulence');
-% lets add gaussian noise with mean = 0 and variance 5.
+% lets add gaussian noise with mean = 0 and variance 0.02
 Gn = imnoise(Fr,'gaussian',0,0.02);
 figure, imshow(Gn(1:M,1:N)); title('Image with gaussian noise');
 % Inverse filtering begins now.
 % remove gaussian noise using mean filter
-Fclear = conv2(single(Gn), ones(5)/25);
+% Fclear = conv2(single(Gn), ones(5)/25);
+Fclear = imgaussfilt(Gn, 0.02);
+% Fclear = gauss_lowpass(Gn);
 figure, imshow(Fclear(1:M,1:N)); title('Gaussian noise removed');
 % lets transform it to frequency domain
 % shifting
