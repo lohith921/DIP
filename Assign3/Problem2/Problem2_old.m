@@ -1,8 +1,9 @@
 clear;
 close all;
-I = imread('i7w0S.png');
+I = imread('i7w0S.1.png');
 I = im2double(I);
-figure, imshow(I); title('original image');
+I = rgb2gray(I);
+figure, imshow(I); title('Original image');
 D0 = 50;
 D1 = 200;
 % order
@@ -12,7 +13,7 @@ Ftr = fft2(I,2*M-1,2*N-1);
 Fp = fftshift(Ftr);
 Fp1 = log(1+abs(Fp));
 Fm = max(max(Fp1));
-figure, imshow(Fp1/Fm); title('Spectrum');
+figure, imshow(Fp1 ./ Fm); title('Spectrum');
 
 % Initializing filters.
 filter1 = ones(2*M-1,2*N-1);
@@ -31,7 +32,7 @@ for i = 1:2*M-1
 end
 % Update image with passed frequencies.
 % filtered_image = Fp + filter3.*Fp;
-filtered_image = filter3.*Fp;
+filtered_image = filter3 .* Fp;
 % filter31 = log(1+abs(filter3));
 % Flm = max(filter31(:));
 % figure, imshow(filter31/Flm); title('Filter Image');
