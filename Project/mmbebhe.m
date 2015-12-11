@@ -2,18 +2,19 @@ function [out]= mmbebhe(In)
 % program for minimum mean brightness preserving bi-histogram equalization
 % corresponding paper is: 'Minimum Mean Brightness Error Bi-Histogram Equalization in
 % Contrast Enhancement '
-[m,n]=size(In);
+[m,n] = size(In);
 % N total # of pixels
 N = m*n;
 % intensity level
-L = max(max(In));
-% K=256;
+% L = max(max(In));
+K = 255;
+L = 256;
 % scaled mean brightness error
 SMBE = zeros(L,1);
 su = 0;
-sz = 0.0;
+
 % the following block of code computes sigma i*F(i)
-for i=1:L
+for i = 1:L
     temp = find(In == (i-1));
     [sz] = (size(temp));
     su = su + (i-1)*int16(sz);
