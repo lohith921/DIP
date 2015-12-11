@@ -1,8 +1,8 @@
-function [ out ] = wthe(In, r)
 % Weighted thresholded intensity transformation program
 % Paper: Fast Image/Video Contrast Enhancement Based on Weighted
 % Thresholded Histogram Equalization
-v = 0.5;
+function [ out ] = wthe(In, r)
+v = 0.8;
 [m,n] = size(In);
 sz = m*n;
 % K = max(max(In));
@@ -11,14 +11,10 @@ pwt = zeros(K,1);
 p = zeros(K,1);
 for i = 1:K
     temp = find(In==(i-1));
-    [nk, d] = size(temp);
+    [nk, ~] = size(temp);
     p(i) = nk/sz;
 end
-% % weighted probability function
-% p1 = sort(p);
-% % selecting probabilities from top 10 and bottow 10 for Pu and Pl
-% up = p1(K-alpha,:);
-% low = p1(alpha,:);
+
 Pu = v*max(p);
 Pl = min(p);
 for i = 1:K
@@ -53,4 +49,9 @@ end
 out = Inew;
 end
 % end of program
+% % weighted probability function
+% p1 = sort(p);
+% % selecting probabilities from top 10 and bottow 10 for Pu and Pl
+% up = p1(K-alpha,:);
+% low = p1(alpha,:);
 
