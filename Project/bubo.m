@@ -2,7 +2,7 @@ function [out] = bubo(In, alpha)
 % program for contrast enhancement using bin underflow and bin overflow mechanism
 % The corresponding paper is 'CONTRAST ENHANCEMENT USING HISTOGRAM EQUALIZATION
 % WITH BIN UNDERFLOWAND BIN OVERFLOW'
-In = imresize(In, 0.65);
+% In = imresize(In, 0.65);
 % figure, imshow(In); title('Reduced image');
 [M,N] = size(In);
 sz = M*N;
@@ -10,8 +10,8 @@ Cbu = abs((1 - alpha)/sz);
 Cbo = (1 + alpha)/sz;
 Cbu
 Cbo
-% K = 256;
-K = max(max(In));
+K = 256;
+% K = max(max(In));
 p = zeros(K,1); % probability density function
 for i=1:K
     temp = find(In==(i-1));
@@ -39,11 +39,12 @@ for i=1:K
     su = 0;
 end
 Iout = In;
+K1 = 255;
 for i=1:M
     for j=1:N
         k = In(i,j);
-        t= (C(K)/K)*k;
-        t1 = K*(C(k+1)-t)+k;
+        t= (C(K)/K1)*k;
+        t1 = K1*(C(k+1)-t)+k;
         Iout(i,j) = t1;
     end
 end
