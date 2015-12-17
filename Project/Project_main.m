@@ -1,17 +1,22 @@
-% This program reads an input image and calls different contrast enhancement methods
-Input = imread('Uexposed.jpg');
+% This program reads an input image and calls different contrast
+% enhancement methods
+prompt = 'Please provide the name of image file';
+filename = input(prompt,'s');
+Input = imread(filename);
 Input = rgb2gray(Input);
-% subplot(2,2,1), imshow(Input); title('original');
-% subplot(2,2,3), imhist(Input); title('histogram before');
-% Iout = bbhe(Input);
-% subplot(2,2,2), imshow(Iout); title('bbhe');
-% subplot(2,2,4), imhist(Iout); title('histogram after');
-% end
+Input = imresize(Input, [320 240]);
+% Lets try brightness preserving bihistogram equalization
 subplot(2,2,1), imshow(Input); title('original');
 subplot(2,2,3), imhist(Input); title('histogram before');
-Iout = wthe(Input,1.5);
-subplot(2,2,2), imshow(Iout); title('wthe with v = 0.8,r = 1.5');
+Iout = bbhe(Input);
+subplot(2,2,2), imshow(Iout); title('bbhe');
 subplot(2,2,4), imhist(Iout); title('histogram after');
+% end
+%subplot(2,2,1), imshow(Input); title('original');
+% subplot(2,2,3), imhist(Input); title('histogram before');
+% Iout = wthe(Input,1.5);
+% subplot(2,2,2), imshow(Iout); title('wthe with v = 0.8,r = 1.5');
+% subplot(2,2,4), imhist(Iout); title('histogram after');
 % subplot(2,2,1), imshow(Input); title('original');
 % subplot(2,2,3), imhist(Input);
 % subplot(2,2,2), imshow(Ibubo); title('enhanced with BUBO');

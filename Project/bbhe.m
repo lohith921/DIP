@@ -3,10 +3,10 @@ function [out]= bbhe(In)
 % corresponding paper is:" Minimum mean brightness error bi-histogram
 % equalization in contrast enhancement"
 [m,n] = size(In);
-% K = int16(max(max(In)));
 X0 = min(min(In));
+Xm = max(max(In));
 L = 256;
-% K=256;
+%me = round(mean2(In));
 me = round(mean2(In));
 Ilow = find(In < me);
 [nlow, ~] = size(Ilow);
@@ -33,7 +33,7 @@ end
 Clow = zeros(me,1);
 Chigh = zeros(L-me,1);
 su = 0;
-for i = 1:me
+for i = 1:me-1
     for j = 1:i
         su = su+plow(j);
     end
@@ -41,7 +41,7 @@ for i = 1:me
     su = 0;
 end
 j = 1;
-for i = me+1:L
+for i = me:L
     for k = me+1:i
         su = su+phigh(j);
     end
@@ -55,32 +55,14 @@ for i = 1:m
     for j = 1:n
         p = In(i,j);
         if(p < me)
-            Iout(i,j) = (me-p)*Clow(me-p+1);
+            Iout(i,j) = X0 + (me-X0)*Clow(p+1);
         else
-            Iout(i,j) = me + (L-1-p)*Chigh(255-p+1);
+            Iout(i,j) = me+1 + (Xm-me)*Chigh(me-p+1);
         end
     end
 end
 out = Iout;
 end
-% end of program
-% for i=1:m
-%     for j=1:n
-%         if(In(i,j) <= me)
-%             Ilow(Ii) = In(i,j);
-%             Ii = Ii + 1;
-%         else
-%             Ihigh(Ih) = In(i,j);
-%             Ih = Ih + 1;
-%         end
-%     end
-% end
-% Ilow = find(In<=me);
-% me = round(me);
-% dividing into sub images
-% Ilow = zeros(100, 1);
-% Ihigh = zeros(100, 1);
-% Ii = 1;
-% Ih = 1;
+
 
 

@@ -3,7 +3,6 @@ function [out]= mmbebhe(In)
 % corresponding paper is: 'Minimum Mean Brightness Error Bi-Histogram Equalization in
 % Contrast Enhancement '
 [m,n] = size(In);
-% N total # of pixels
 N = m*n;
 % intensity level
 % L = max(max(In));
