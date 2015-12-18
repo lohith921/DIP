@@ -2,7 +2,7 @@
 % Paper: Fast Image/Video Contrast Enhancement Based on Weighted
 % Thresholded Histogram Equalization
 function [ out ] = wthe(In, r)
-v = 0.8;
+v = 0.5;
 [m,n] = size(In);
 sz = m*n;
 % K = max(max(In));
@@ -12,7 +12,7 @@ p = zeros(K,1);
 for i = 1:K
     temp = find(In==(i-1));
     [nk, ~] = size(temp);
-    p(i) = nk/sz;
+    p(i) = double(nk/sz);
 end
 
 Pu = v*max(p);
@@ -23,27 +23,32 @@ for i = 1:K
     elseif(p(i) <= Pl)
         pwt(i) = 0;
     else
-        t = (p(i)-Pl)/(Pu-Pl);
-        t1 = (t^r)*Pu;
-        pwt(i) = t1;
+        t = double((p(i)-Pl)/(Pu-Pl));
+        t1 = double((t^r)*Pu);
+        pwt(i) = double(t1);
     end
 end
 % cumulative distribution function
-Cwt = size(K,1);
-su = 0;
+Cwt = zeros(K,1);
+su = 0.0;
 for i = 1:K
     for j = 1:i
         su = su + pwt(j);
     end
     Cwt(i) = su;
+    su = 0.0;
 end
 Inew = In;
 % temporary parameter values
 Wout = K-1;
-Madj = 0;
+Madj = 10;
 for i=1:m
     for j=1:n
-        Inew(i,j) = Wout*Cwt(In(i,j)+1)+Madj;
+        p1 = In(i,j);
+        if( p1 == 0 )
+            p1 = 1;
+        end
+        Inew(i,j) = Wout*Cwt(p1)+Madj;
     end
 end
 out = Inew;
